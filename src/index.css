@@ -104,13 +104,6 @@ button {
   cursor: pointer;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 0 1rem;
-  max-width: 1000px;
-  width: 100%;
-}
-
 .header {
   border-bottom: 1px solid color-mix(in srgb, var(--font-secondary-color) 30%, #FFFFFF 70%);
   width: 100%;
@@ -169,15 +162,23 @@ button {
   font-weight: 500;
 }
 
+.additional-info-block {
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
 .main {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 1rem 0;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  max-width: 1000px;
+  width: 100%;
 }
-
-.main__current-weather-additionals-block {}
 
 .main__current-weather-additional {
   display: flex;
@@ -194,8 +195,6 @@ button {
   aspect-ratio: 1 / 1;
   height: 75%;
 }
-
-.main__current-weather-additional-description {}
 
 .main__current-weather-block {
   display: grid;
@@ -256,8 +255,6 @@ button {
   max-height: 64px;
 }
 
-.hour-forecast-temperature {}
-
 .next-day-forecast-block {
   border-radius: 8px;
   box-shadow: 0 1px 4px -1px var(--font-secondary-color);
@@ -281,8 +278,6 @@ button {
   font-weight: 400;
 }
 
-.next-day-forecast__day {}
-
 .next-day-forecast__details-block {
   display: flex;
   align-items: center;
@@ -296,8 +291,6 @@ button {
   flex-direction: column;
   align-items: flex-end;
 }
-
-.next-day-forecast__wind-speed {}
 
 .next-day-forecast__image {
   align-self: flex-start;
@@ -315,12 +308,8 @@ button {
   align-items: flex-end;
 }
 
-.next-day-forecast__day-temp {}
-
 .next-day-forecast__night-temp-block {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
-
-.next-day-forecast__night-temp {}
