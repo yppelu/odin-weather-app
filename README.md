@@ -1,3 +1,4 @@
 # odin-weather-app
 
-TOP project. Main goal is in utilizing API and asynchronous code.
+TOP project. Main goal is to utilize API and asynchronous code.\
+The favicon is from Flaticon.

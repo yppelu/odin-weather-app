@@ -137,7 +137,8 @@ function createOneHourForecastBlock(forecastForAnHour) {
 
   const forecastTemperatureSpan = document.createElement('span');
   forecastTemperatureSpan.classList.add('hour-forecast-temperature');
-  forecastTemperatureSpan.textContent = forecastForAnHour.temp_c.toFixed(0);
+  forecastTemperatureSpan.textContent = forecastForAnHour.temp_c.toFixed(0)
+    + '°';
 
   forecastBlock.append(forecastTimeSpan);
   forecastBlock.append(forecastIcon);
