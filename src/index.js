@@ -33,7 +33,7 @@ async function getWeatherData(cityName) {
 
 async function validateSearchInput(inputValue) {
   if (inputValue.length > 1 && inputValue.length < 50) {
-    document.body.appendChild(loading);
+    showLoading();
     const weatherData = await getWeatherData(inputValue);
     if (weatherData) processWeatherData(weatherData);
   }
@@ -110,6 +110,11 @@ function createLoadingElement() {
 
   container.append(loading);
   return container;
+}
+
+function showLoading() {
+  locationNameBlock.textContent = '';
+  document.body.appendChild(loading);
 }
 
 function createOneHourForecastBlock(forecastForAnHour) {
