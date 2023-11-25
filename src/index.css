@@ -313,3 +313,38 @@ button {
   flex-direction: column;
   align-items: flex-end;
 }
+
+.loadingContainer {
+  background-color: #FFFFFF;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: calc(4rem + 1px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loading {
+  border-radius: 100%;
+
+  animation: spin 1s infinite linear;
+
+  border: 0.5rem solid color-mix(in srgb, var(--font-secondary-color) 15%, #FFFFFF 85%);
+  border-top: 0.5rem solid var(--font-secondary-color);
+  height: 3rem;
+  width: 3rem;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

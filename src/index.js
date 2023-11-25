@@ -1,5 +1,7 @@
 import './index.css';
 
+const loading = createLoadingElement();
+
 const searchForm = document.querySelector('.header_search-form');
 const searchInput = document.querySelector('.header__search-input');
 const locationNameBlock = document.querySelector('.header__location-name');
@@ -30,8 +32,11 @@ async function getWeatherData(cityName) {
 }
 
 async function validateSearchInput(inputValue) {
-  const weatherData = await getWeatherData(inputValue);
-  if (weatherData) processWeatherData(weatherData);
+  if (inputValue.length > 1 && inputValue.length < 50) {
+    document.body.appendChild(loading);
+    const weatherData = await getWeatherData(inputValue);
+    if (weatherData) processWeatherData(weatherData);
+  }
 }
 
 function processWeatherData(weatherData) {
@@ -54,6 +59,8 @@ function processWeatherData(weatherData) {
   fillCurrentConditionsOnPage(currentConditions);
   populatePageWithHourlyForecast(nextDaysForecasts);
   populatePageWithNextDaysForecast(nextDaysForecasts.slice(1));
+
+  document.body.removeChild(loading);
 }
 
 function fillCurrentConditionsOnPage(currentConditions) {
@@ -92,6 +99,17 @@ function populatePageWithHourlyForecast(daysForecasts) {
   }
 
   additionalInfoBlock.append(hourlyForecastBlock);
+}
+
+function createLoadingElement() {
+  const container = document.createElement('div');
+  container.classList.add('loadingContainer');
+
+  const loading = document.createElement('div');
+  loading.classList.add('loading');
+
+  container.append(loading);
+  return container;
 }
 
 function createOneHourForecastBlock(forecastForAnHour) {
