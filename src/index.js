@@ -26,14 +26,17 @@ searchForm.addEventListener('submit', (e) => {
 validateSearchInput('Saransk');
 
 async function getWeatherData(cityName) {
+  showLoading();
   const forecastResponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=4f889e1d89284a96bd475947232311&q=${cityName}&days=3`, { mode: 'cors' });
-  if (!forecastResponse.ok) return false;
+  if (!forecastResponse.ok) {
+    closeLoading();
+    return false;
+  }
   return await forecastResponse.json();
 }
 
 async function validateSearchInput(inputValue) {
   if (inputValue.length > 1 && inputValue.length < 50) {
-    showLoading();
     const weatherData = await getWeatherData(inputValue);
     if (weatherData) processWeatherData(weatherData);
   }
@@ -60,7 +63,7 @@ function processWeatherData(weatherData) {
   populatePageWithHourlyForecast(nextDaysForecasts);
   populatePageWithNextDaysForecast(nextDaysForecasts.slice(1));
 
-  document.body.removeChild(loading);
+  closeLoading();
 }
 
 function fillCurrentConditionsOnPage(currentConditions) {
@@ -113,8 +116,13 @@ function createLoadingElement() {
 }
 
 function showLoading() {
-  locationNameBlock.textContent = '';
+  locationNameBlock.style.color = 'transparent';
   document.body.appendChild(loading);
+}
+
+function closeLoading() {
+  locationNameBlock.removeAttribute('style');
+  document.body.removeChild(loading);
 }
 
 function createOneHourForecastBlock(forecastForAnHour) {
